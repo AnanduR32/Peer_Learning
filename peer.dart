@@ -32,7 +32,7 @@ class Peer{
   }
   int check(var id,int count){
     int flag=0;
-    for(int i=0;i<count;i++){
+    for(int i=0;i<=count;i++){
       if(user[i]==id){
         flag=1;
         break;
@@ -71,6 +71,8 @@ void main(){
           if(obj.check(idT,count)==1){
             obj.addStacks(idT);
           }
+          else 
+            print('So Such user exists\n');
           break;
         case 3:
           print('Enter user id: ');
@@ -78,6 +80,9 @@ void main(){
           if(obj.check(idT,count)==1){
             obj.setMentorOrLearner(idT);
           }
+
+          else 
+            print('So Such user exists\n');
           break;
         case 4:
           print('Enter user id: ');
