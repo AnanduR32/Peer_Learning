@@ -7,12 +7,12 @@ class Peer{
     print('Enter tech stack: ');
     var stack = stdin.readLineSync();
     stack.split(' ');
-    user[id].stack=stack;
+    user[id]['stack']=stack;
   }void setMentorOrLearner(var id){  //Set whether the participant is learner or mentor
     print('Is user mentor or learner: ');
     var desig = stdin.readLineSync();
     if(desig.toLowerCase()=='learner'){
-      user[id].desig='learner';
+      user[id]['desig']='learner';
     }else if(desig.toLowerCase()=='mentor')
       user[id][0]='mentor';
   }void setAvailableTime(var id){  //if person is mentor set available time
@@ -20,20 +20,20 @@ class Peer{
       print('Enter working hours: ');
       var time = stdin.readLineSync();
       time.split(' ');   
-      user[id].hours=time;
+      user[id]['hours']=time;
     }
   }void getMentor(var id){  //Takes stack and time as params and finds available mentors. 
     if(user[id][0]=='mentor'){
       print('Enter tech stack: ');
       var stack = stdin.readLineSync();
       stack.split(' ');  
-      user[id][1]=stack;      
+      user[id]['stack']=stack;      
     }
   }
-  int check(var id,int count){
+  int check(var idT,int count){
     int flag=0,i;
     for(i=0;i<count;i++){
-      if(user[i].id==id){
+      if(user[i]['id']==idT){
         flag=1;
         break;
       }
@@ -46,10 +46,12 @@ class Peer{
 }
 void main(){
     user[0]={'desig':'mentor','stack':{'dart'},'hours':{9,17},'id':'admin'};
+    user[1]={'desig':'learner','stack':{'flutter'},'hours':{9,18},'id':'student'};
+    user[2]={'desig':'learner','stack':{'java'},'hours':{9,15},'id':'worker'};
     var id,idT;
     int count=1,c=0,ret,j;
     Peer obj=new Peer();
-    print(user[0]);
+    print(user[0]['id']);
     while(true){
       ret=-1;
       if(c==0){
@@ -102,8 +104,10 @@ void main(){
           print('Enter working hours: ');
           var timer = stdin.readLineSync();
           timer.split(' ');
+          var times;
           for(j=0;j<count;j++){
-            if((user[j].time[0]>timer[0])&(user[j].time[1]<timer[1]))
+            times=user[j]['time'];
+            if((times[0]>timer[0])&(times[1]<timer[1]))
               print('\nMentor Available: ');
               print(user[j].id);
           }
