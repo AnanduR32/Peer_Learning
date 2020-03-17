@@ -72,7 +72,7 @@ void main(){
             obj.addStacks(idT);
           }
           else 
-            print('So Such user exists\n');
+            print('No Such user exists\n');
           break;
         case 3:
           print('Enter user id: ');
@@ -82,7 +82,7 @@ void main(){
           }
 
           else 
-            print('So Such user exists\n');
+            print('No Such user exists\n');
           break;
         case 4:
           print('Enter user id: ');
