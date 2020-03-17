@@ -26,7 +26,9 @@ class Peer{
       stack.split(' ');  
       user[id][1]=stack;      
     }
-  }main(){
+  }
+}
+main(){
     user['admin']={'mentor',{'dart'},{9,17}};
     print('\nWelcome to peer learning\nChoose an option:\n\t1.Enter new user\n\t2.Update existing stack\n\t3.Set user designation\n\tSet Working hours\n\tSearch for users in working time\n');
     int ch = int.parse(stdin.readLineSync());
@@ -34,7 +36,6 @@ class Peer{
       case 1:
         print('Enter user id: ');
         var id = stdin.readLineSync();
-        
+        user[id]={'null',{'null'},{0,0}};
     }
   }
-}
