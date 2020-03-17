@@ -1,4 +1,5 @@
 import 'dart:io';
+
 var user = new Map(); 
 
 class Peer{
@@ -43,7 +44,7 @@ class Peer{
 }
 void main(){
     user['admin']={'mentor',{'dart'},{9,17}};
-    print('\nWelcome to peer learning\nChoose an option:\n\t1.Enter new user\n\t2.Update existing stack\n\t3.Set user designation\n\t4.Set Working hours\n\t5.Search for users in working time\n');
+    print('\nWelcome to peer learning\nChoose an option:\n\t1.Enter new user\n\t2.Update existing stack\n\t3.Set user designation\n\t4.Set Working hours\n\t5.Search for mentors in working time\n');
     int ch = int.parse(stdin.readLineSync());
     assert(ch is int);
     var id,idT;
@@ -62,7 +63,5 @@ void main(){
         if(obj.check(idT,count)==1){
           
         }
-      
     }
-  
   }
