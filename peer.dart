@@ -4,7 +4,10 @@ var user = new Map();
 
 class Peer{
   addStacks(int id){  //Add a particular stack of interest/expertise
-    
+    print('Enter tech stack: ');
+    var stack = stdin.readLineSync();
+    stack.split(' ');
+    user[id][1]=stack;
   }void setMentorOrLearner(var id){  //Set whether the participant is learner or mentor
     print('Is user mentor or learner: ');
     var desig = stdin.readLineSync();
@@ -12,7 +15,6 @@ class Peer{
       user[id][0]='learner';
     }else if(desig.toLowerCase()=='mentor')
       user[id][0]='mentor';
-    
   }void setAvailableTime(var id){  //if person is mentor set available time
     if(user[id][0]=='mentor'){
       print('Enter working hours: ');
@@ -44,9 +46,6 @@ class Peer{
 }
 void main(){
     user['admin']={'mentor',{'dart'},{9,17}};
-    
-    
-    
     var id,idT;
     int count=0,c=0;
     Peer obj=new Peer();
@@ -70,8 +69,28 @@ void main(){
           print('Enter user id: ');
           idT = stdin.readLineSync();
           if(obj.check(idT,count)==1){
-            
+            obj.addStacks(idT);
           }
+          break;
+        case 3:
+          print('Enter user id: ');
+          idT = stdin.readLineSync();
+          if(obj.check(idT,count)==1){
+            obj.setMentorOrLearner(idT);
+          }
+          break;
+        case 4:
+          print('Enter user id: ');
+          idT = stdin.readLineSync();
+          if(obj.check(idT,count)==1){
+            obj.setAvailableTime(idT);
+          }
+          break;
+        case 5:
+          print('Enter working hours: ');
+          var time = stdin.readLineSync();
+          time.split(' ');
+             
       }
     }
   }
