@@ -31,23 +31,23 @@ class Peer{
     }
   }
   int check(var id,int count){
-    int flag=0;
-    for(int i=0;i<=count;i++){
-      if(user[i]==id){
+    int flag=0,i;
+    for(i=0;i<=count;i++){
+      if(user[i][3]==id){
         flag=1;
         break;
       }
     }
     if(flag==1)
-      return(1);
+      return(i);
     else
-      return(0);
+      return(-1);
   }
 }
 void main(){
-    user['admin']={'mentor',{'dart'},{9,17}};
+    user[0]={'mentor',{'dart'},{9,17},'id'};
     var id,idT;
-    int count=0,c=0;
+    int count=1,c=0,ret;
     Peer obj=new Peer();
     while(true){
       if(c==0){
@@ -62,14 +62,15 @@ void main(){
         case 1:
           print('Enter user id: ');
           id = stdin.readLineSync();
-          user[id]={'null',{'null'},{0,0}};
+          user[count]={'null',{'null'},{0,0},id};
           count++;
           break;
         case 2:
           print('Enter user id: ');
           idT = stdin.readLineSync();
-          if(obj.check(idT,count)==1){
-            obj.addStacks(idT);
+          ret=obj.check(idT,count);
+          if(ret!=-1){
+            obj.addStacks(ret);
           }
           else 
             print('No Such user exists\n');
@@ -77,24 +78,28 @@ void main(){
         case 3:
           print('Enter user id: ');
           idT = stdin.readLineSync();
-          if(obj.check(idT,count)==1){
-            obj.setMentorOrLearner(idT);
+          ret=obj.check(idT,count);
+          if(ret!=-1){
+            obj.setMentorOrLearner(ret);
           }
-
           else 
             print('No Such user exists\n');
-          break;
+          break;   
         case 4:
           print('Enter user id: ');
           idT = stdin.readLineSync();
-          if(obj.check(idT,count)==1){
-            obj.setAvailableTime(idT);
+          ret=obj.check(idT,count);
+          if(ret!=-1){
+            obj.setAvailableTime(ret);
           }
-          break;
+          else 
+            print('No Such user exists\n');
+          break;   
         case 5:
           print('Enter working hours: ');
           var time = stdin.readLineSync();
           time.split(' ');
+          
              
       }
     }
