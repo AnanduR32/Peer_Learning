@@ -16,9 +16,16 @@ class Peer{
     if(user[id][0]=='mentor'){
       print('Enter working hours: ');
       var time = stdin.readLineSync();
-      time.split(' ');                     
+      time.split(' ');   
+      user[id][2]=time;
     }
-  }getMentor(){  //Takes stack and time as params and finds available mentors. 
+  }getMentor(int id){  //Takes stack and time as params and finds available mentors. 
+    if(user[id][0]=='mentor'){
+      print('Enter tech stack: ');
+      var stack = stdin.readLineSync();
+      stack.split(' ');  
+      user[id][1]=stack;      
+    }
   }main(){
     user['admin']={'mentor',{'dart'},{9,17}};
     
