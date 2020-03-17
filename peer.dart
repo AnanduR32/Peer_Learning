@@ -109,7 +109,8 @@ void main(){
             times=user[j]['time'];
             if((times[0]>timer[0])&(times[1]<timer[1]))
               print('\nMentor Available: ');
-              print(user[j].id);
+              print(user[j]['id']);
+              print(user[j]['hours']);
           }
       }
     }
