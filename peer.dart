@@ -23,7 +23,7 @@ class Peer{
       user[id]['hours']=time;
     }
   }void getMentor(var id){  //Takes stack and time as params and finds available mentors. 
-    if(user[id][0]=='mentor'){
+    if(user[id]['desig']=='mentor'){
       print('Enter tech stack: ');
       var stack = stdin.readLineSync();
       stack.split(' ');  
