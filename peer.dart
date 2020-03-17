@@ -44,24 +44,34 @@ class Peer{
 }
 void main(){
     user['admin']={'mentor',{'dart'},{9,17}};
-    print('\nWelcome to peer learning\nChoose an option:\n\t1.Enter new user\n\t2.Update existing stack\n\t3.Set user designation\n\t4.Set Working hours\n\t5.Search for mentors in working time\n');
-    int ch = int.parse(stdin.readLineSync());
-    assert(ch is int);
+    
+    
+    
     var id,idT;
-    int count=0;
+    int count=0,c=0;
     Peer obj=new Peer();
-    switch(ch){
-      case 1:
-        print('Enter user id: ');
-        id = stdin.readLineSync();
-        user[id]={'null',{'null'},{0,0}};
-        count++;
-        break;
-      case 2:
-        print('Enter user id: ');
-        idT = stdin.readLineSync();
-        if(obj.check(idT,count)==1){
-          
-        }
+    while(true){
+      if(c==0){
+        print('\nWelcome to peer learning\nChoose an option:\n\t1.Enter new user\n\t2.Update existing stack\n\t3.Set user designation\n\t4.Set Working hours\n\t5.Search for mentors in working time\n');
+      }
+      else
+        print('Enter your choice: ');
+      int ch = int.parse(stdin.readLineSync());
+      assert(ch is int);
+      c=1;
+      switch(ch){
+        case 1:
+          print('Enter user id: ');
+          id = stdin.readLineSync();
+          user[id]={'null',{'null'},{0,0}};
+          count++;
+          break;
+        case 2:
+          print('Enter user id: ');
+          idT = stdin.readLineSync();
+          if(obj.check(idT,count)==1){
+            
+          }
+      }
     }
   }
