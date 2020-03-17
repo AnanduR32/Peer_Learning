@@ -16,7 +16,7 @@ class Peer{
     }else if(desig.toLowerCase()=='mentor')
       user[id]['desig']='mentor';
   }void setAvailableTime(var id){  //if person is mentor set available time
-    if(user[id][0]=='mentor'){
+    if(user[id]['desig']=='mentor'){
       print('Enter working hours: ');
       var time = stdin.readLineSync();
       time.split(' ');   
