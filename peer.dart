@@ -4,7 +4,7 @@ var user = new Map();
 class Peer{
   addStacks(int id){  //Add a particular stack of interest/expertise
     
-  }setMentorOrLearner(var id){  //Set whether the participant is learner or mentor
+  }void setMentorOrLearner(var id){  //Set whether the participant is learner or mentor
     print('Is user mentor or learner: ');
     var desig = stdin.readLineSync();
     if(desig.toLowerCase()=='learner'){
@@ -12,14 +12,14 @@ class Peer{
     }else if(desig.toLowerCase()=='mentor')
       user[id][0]='mentor';
     
-  }setAvailableTime(var id){  //if person is mentor set available time
+  }void setAvailableTime(var id){  //if person is mentor set available time
     if(user[id][0]=='mentor'){
       print('Enter working hours: ');
       var time = stdin.readLineSync();
       time.split(' ');   
       user[id][2]=time;
     }
-  }getMentor(var id){  //Takes stack and time as params and finds available mentors. 
+  }void getMentor(var id){  //Takes stack and time as params and finds available mentors. 
     if(user[id][0]=='mentor'){
       print('Enter tech stack: ');
       var stack = stdin.readLineSync();
@@ -27,7 +27,7 @@ class Peer{
       user[id][1]=stack;      
     }
   }
-  check(var id,int count){
+  int check(var id,int count){
     int flag=0;
     for(int i=0;i<count;i++){
       if(user[i]==id){
@@ -41,7 +41,7 @@ class Peer{
       return(0);
   }
 }
-main(){
+void main(){
     user['admin']={'mentor',{'dart'},{9,17}};
     print('\nWelcome to peer learning\nChoose an option:\n\t1.Enter new user\n\t2.Update existing stack\n\t3.Set user designation\n\t4.Set Working hours\n\t5.Search for users in working time\n');
     int ch = int.parse(stdin.readLineSync());
