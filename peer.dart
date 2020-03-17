@@ -7,12 +7,12 @@ class Peer{
     print('Enter tech stack: ');
     var stack = stdin.readLineSync();
     stack.split(' ');
-    user[id][1]=stack;
+    user[id].stack=stack;
   }void setMentorOrLearner(var id){  //Set whether the participant is learner or mentor
     print('Is user mentor or learner: ');
     var desig = stdin.readLineSync();
     if(desig.toLowerCase()=='learner'){
-      user[id][0]='learner';
+      user[id].desig='learner';
     }else if(desig.toLowerCase()=='mentor')
       user[id][0]='mentor';
   }void setAvailableTime(var id){  //if person is mentor set available time
@@ -20,7 +20,7 @@ class Peer{
       print('Enter working hours: ');
       var time = stdin.readLineSync();
       time.split(' ');   
-      user[id][2]=time;
+      user[id].hours=time;
     }
   }void getMentor(var id){  //Takes stack and time as params and finds available mentors. 
     if(user[id][0]=='mentor'){
@@ -32,8 +32,8 @@ class Peer{
   }
   int check(var id,int count){
     int flag=0,i;
-    for(i=0;i<=count;i++){
-      if(user[i][3]==id){
+    for(i=0;i<count;i++){
+      if(user[i].id==id){
         flag=1;
         break;
       }
@@ -45,11 +45,13 @@ class Peer{
   }
 }
 void main(){
-    user[0]={'mentor',{'dart'},{9,17},'id'};
+    user[0]={'desig':'mentor','stack':{'dart'},'hours':{9,17},'id':'admin'};
     var id,idT;
     int count=1,c=0,ret;
     Peer obj=new Peer();
+    print(user[0]);
     while(true){
+      ret=-1;
       if(c==0){
         print('\nWelcome to peer learning\nChoose an option:\n\t1.Enter new user\n\t2.Update existing stack\n\t3.Set user designation\n\t4.Set Working hours\n\t5.Search for mentors in working time\n');
       }
@@ -62,13 +64,14 @@ void main(){
         case 1:
           print('Enter user id: ');
           id = stdin.readLineSync();
-          user[count]={'null',{'null'},{0,0},id};
+          user[count]={'desig':'null','stack':{'null'},'hours':{0,0},'id':id};
+          print(user[count]);
           count++;
           break;
         case 2:
           print('Enter user id: ');
-          idT = stdin.readLineSync();
-          ret=obj.check(idT,count);
+          id = stdin.readLineSync();
+          ret=obj.check(id,count);
           if(ret!=-1){
             obj.addStacks(ret);
           }
@@ -77,8 +80,8 @@ void main(){
           break;
         case 3:
           print('Enter user id: ');
-          idT = stdin.readLineSync();
-          ret=obj.check(idT,count);
+          id = stdin.readLineSync();
+          ret=obj.check(id,count);
           if(ret!=-1){
             obj.setMentorOrLearner(ret);
           }
@@ -87,8 +90,8 @@ void main(){
           break;   
         case 4:
           print('Enter user id: ');
-          idT = stdin.readLineSync();
-          ret=obj.check(idT,count);
+          id = stdin.readLineSync();
+          ret=obj.check(id,count);
           if(ret!=-1){
             obj.setAvailableTime(ret);
           }
