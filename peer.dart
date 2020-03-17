@@ -27,15 +27,42 @@ class Peer{
       user[id][1]=stack;      
     }
   }
+  check(var id,int count){
+    int flag=0;
+    for(int i=0;i<count;i++){
+      if(user[i]==id){
+        flag=1;
+        break;
+      }
+    }
+    if(flag==1)
+      return(1);
+    else
+      return(0);
+  }
 }
 main(){
     user['admin']={'mentor',{'dart'},{9,17}};
     print('\nWelcome to peer learning\nChoose an option:\n\t1.Enter new user\n\t2.Update existing stack\n\t3.Set user designation\n\t4.Set Working hours\n\t5.Search for users in working time\n');
     int ch = int.parse(stdin.readLineSync());
+    assert(ch is int);
+    var id,idT;
+    int count=0;
+    Peer obj=new Peer();
     switch(ch){
       case 1:
         print('Enter user id: ');
-        var id = stdin.readLineSync();
+        id = stdin.readLineSync();
         user[id]={'null',{'null'},{0,0}};
+        count++;
+        break;
+      case 2:
+        print('Enter user id: ');
+        idT = stdin.readLineSync();
+        if(obj.check(idT,count)==1){
+          
+        }
+      
     }
+  
   }
