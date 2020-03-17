@@ -47,7 +47,7 @@ class Peer{
 void main(){
     user[0]={'desig':'mentor','stack':{'dart'},'hours':{9,17},'id':'admin'};
     var id,idT;
-    int count=1,c=0,ret;
+    int count=1,c=0,ret,j;
     Peer obj=new Peer();
     print(user[0]);
     while(true){
@@ -100,10 +100,13 @@ void main(){
           break;   
         case 5:
           print('Enter working hours: ');
-          var time = stdin.readLineSync();
-          time.split(' ');
-          
-             
+          var timer = stdin.readLineSync();
+          timer.split(' ');
+          for(j=0;j<count;j++){
+            if((user[j].time[0]>timer[0])&(user[j].time[1]<timer[1]))
+              print('\nMentor Available: ');
+              print(user[j].id);
+          }
       }
     }
   }
