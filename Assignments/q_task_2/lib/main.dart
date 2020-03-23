@@ -5,22 +5,16 @@ import 'user.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: bgColor,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
+  MyHomePage({Key key}) : super(key: key);
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -29,8 +23,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bgColor,
       appBar: AppBar(
-          title: Text(widget.title),
+          elevation: 0.0,
+          backgroundColor: bgColor,
           leading: new IconButton(
             icon: new Icon(Icons.arrow_back, color: raspColor),
             onPressed: () => Navigator.of(context).pop(),
@@ -39,9 +35,9 @@ class _MyHomePageState extends State<MyHomePage> {
             color: raspColor,
           ),
           actions: <Widget>[
-            FlatButton.icon(
-              icon: Icon(Icons.person),
-              label: Text('Logout'),
+            FloatingActionButton(
+              child: Icon(Icons.person),
+              backgroundColor: raspColor,
               onPressed: () {
                 Navigator.push(
                   context,
