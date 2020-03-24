@@ -190,6 +190,9 @@ class _HomepageState extends State<Homepage> {
                       return PostStack(post: posts[index]);
                     },
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                  ),
                 ],
               ),
             ),

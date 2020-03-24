@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'models/postClass.dart';
+import 'colors.dart';
+import 'user.dart';
 
 class PostStack extends StatelessWidget {
   final PostClass post;
@@ -21,12 +23,22 @@ class PostStack extends StatelessWidget {
               _imageBackground(post),
               Container(
                 padding: EdgeInsets.all(20),
-                child: Column(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    _nameOfUser(post),
-                    _locationOfUser(post),
-                    _captionOfUser(post),
+                    _imageAvatar(post, context),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15.0),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        _nameOfUser(post),
+                        _locationOfUser(post),
+                        _captionOfUser(post),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -35,6 +47,23 @@ class PostStack extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _imageAvatar(PostClass post, context) {
+    return FloatingActionButton(
+      child: Icon(Icons.person),
+      // child: Container(
+      //   child: Image.asset('asset/user.jpg'),
+      //   height: 25,
+      // ),
+      backgroundColor: raspColor,
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => User()),
+        );
+      },
     );
   }
 
