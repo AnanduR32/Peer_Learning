@@ -125,7 +125,7 @@ class _HomepageState extends State<Homepage> {
                             iconSize: 16,
                             elevation: 0,
                             style: TextStyle(
-                                color: Colors.grey,
+                                color: Colors.grey[600],
                                 fontWeight: FontWeight.w500),
                             underline: null,
                             onChanged: (String newValue) {
