@@ -6,30 +6,30 @@ class PostStack extends StatelessWidget {
   PostStack({this.post});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Container(
-        padding: EdgeInsets.all(20),
-        height: 300,
-        child: Stack(
-          children: <Widget>[
-            Container(
-              child: _imageBackground(post),
-            ),
-            Column(
-              children: <Widget>[
-                Container(
-                  child: _nameOfUser(post),
-                ),
-                Container(
-                  child: _locationOfUser(post),
-                ),
-                Container(
-                  child: _captionOfUser(post),
-                ),
-              ],
-            ),
-          ],
-        ),
+    return SizedBox(
+      // margin: EdgeInsets.all(20),
+      height: 200,
+      child: Stack(
+        children: <Widget>[
+          Container(
+            child: _imageBackground(post),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                child: _nameOfUser(post),
+              ),
+              Container(
+                child: _locationOfUser(post),
+              ),
+              Container(
+                child: _captionOfUser(post),
+              ),
+            ],
+          ),
+        ],
+        overflow: Overflow.visible,
       ),
     );
   }
