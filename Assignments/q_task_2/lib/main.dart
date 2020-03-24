@@ -89,7 +89,7 @@ class _HomepageState extends State<Homepage> {
         child: ListView(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.fromLTRB(60, 0, 60, 0),
+              padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[

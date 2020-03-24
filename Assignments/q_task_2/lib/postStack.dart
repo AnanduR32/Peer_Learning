@@ -55,7 +55,7 @@ class PostStack extends StatelessWidget {
     return Container(
         child: Text(
       post.name,
-      style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
+      style: TextStyle(color: Colors.grey[600], fontWeight: FontWeight.w400),
     ));
   }
 
@@ -63,7 +63,7 @@ class PostStack extends StatelessWidget {
     return Container(
         child: Text(
       post.location,
-      style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
+      style: TextStyle(color: Colors.grey[600], fontWeight: FontWeight.w400),
     ));
   }
 
@@ -71,7 +71,7 @@ class PostStack extends StatelessWidget {
     return Container(
         child: Text(
       post.caption,
-      style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
+      style: TextStyle(color: Colors.grey[600], fontWeight: FontWeight.w400),
     ));
   }
 }
