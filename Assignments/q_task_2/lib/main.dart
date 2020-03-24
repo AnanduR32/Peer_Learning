@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:q_task_2/postStack.dart';
 import 'colors.dart';
 import 'user.dart';
 import 'package:flutter/rendering.dart';
@@ -31,7 +32,7 @@ class TinkerApp extends StatelessWidget {
 
 class Homepage extends StatefulWidget {
   Homepage({Key key}) : super(key: key);
-  final posts = UserPosts.fetchAll();
+  final posts = UserPosts.fetchAll() ?? [];
   @override
   _HomepageState createState() => _HomepageState(posts);
 }
@@ -114,7 +115,8 @@ class _HomepageState extends State<Homepage> {
                         child: Text(
                           durationDrop,
                           style: TextStyle(
-                              color: Colors.grey, fontWeight: FontWeight.w500),
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
                       Container(
@@ -132,8 +134,8 @@ class _HomepageState extends State<Homepage> {
                                 durationDrop = newValue;
                               });
                             },
-                            items: duration
-                                .map<DropdownMenuItem<String>>((String value) {
+                            items: duration.map<DropdownMenuItem<String>>(
+                                (String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(value),
@@ -166,8 +168,8 @@ class _HomepageState extends State<Homepage> {
                                 postDrop = newValue;
                               });
                             },
-                            items: postType
-                                .map<DropdownMenuItem<String>>((String value) {
+                            items: postType.map<DropdownMenuItem<String>>(
+                                (String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(value),
@@ -181,33 +183,15 @@ class _HomepageState extends State<Homepage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                   ),
-                  ListView.builder(
-                    itemCount: this.posts.length,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: <Widget>[
-                          Container(
-                            padding: EdgeInsets.all(20),
-                            child: Stack(
-                              children: <Widget>[
-                                Container(
-                                  child: _imageBackground(this.posts[index]),
-                                ),
-                                Container(
-                                  child: _nameOfUser(this.posts[index]),
-                                ),
-                                Container(
-                                  child: _locationOfUser(this.posts[index]),
-                                ),
-                                Container(
-                                  child: _captionOfUser(this.posts[index]),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      );
-                    },
+                  Column(
+                    children: <Widget>[
+                      ListView.builder(
+                        itemCount: posts.length,
+                        itemBuilder: (context,index){
+                          return PostStack(post: posts[index]);
+                        },
+                      ),
+                    ],
                   )
                 ],
               ),
@@ -218,21 +202,4 @@ class _HomepageState extends State<Homepage> {
     );
   }
 
-  Widget _imageBackground(PostClass posts) {
-    return Container(
-        constraints: BoxConstraints.expand(),
-        child: Image.network(posts.image, fit: BoxFit.fitWidth));
-  }
-  Widget _nameOfUser(PostClass posts) {
-    return Container(
-        child: Text(posts.name));
-  }
-  Widget _locationOfUser(PostClass posts) {
-    return Container(
-        child: Text(posts.location));
-  }
-  Widget _captionOfUser(PostClass posts) {
-    return Container(
-        child: Text(posts.caption));
-  }
 }

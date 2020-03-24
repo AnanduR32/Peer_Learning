@@ -1,4 +1,4 @@
-class PostClass {
+class PostClass<String> {
   final String name;
   final String location;
   final String caption;
