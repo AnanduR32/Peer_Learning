@@ -2,30 +2,8 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 import 'user.dart';
 import 'package:flutter/rendering.dart';
-import 'models/post.dart';
+// import 'models/post.dart';
 import 'details/posts.dart';
-
-void main() {
-  final mockPost = Details.fetchAll();
-  runApp(Homepage(mockPost));
-}
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Homepage(),
-//     );
-//   }
-// }
-
-class Homepage extends StatefulWidget {
-  final List<Post> posts;
-  Homepage(this.posts);
-  // Homepage({Key key}) : super(key: key);
-  @override
-  _HomepageState createState() => _HomepageState(posts);
-}
 
 String durationDrop = 'Today';
 String postDrop = 'All';
@@ -40,10 +18,27 @@ final List<String> postType = <String>[
   'Contests',
   'Posts',
 ];
+void main() => runApp(TinkerApp());
+
+class TinkerApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Homepage(),
+    );
+  }
+}
+
+class Homepage extends StatefulWidget {
+  Homepage({Key key}) : super(key: key);
+  @override
+  _HomepageState createState() => _HomepageState();
+}
 
 class _HomepageState extends State<Homepage> {
-  final List<Post> posts;
-  _HomepageState(this.posts);
+  // final List<Post> posts;
+  // _HomepageState(this.posts);
+  final posts = Details.fetchAll();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -186,25 +181,24 @@ class _HomepageState extends State<Homepage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      ListView.builder(
-                        itemCount: this.posts.length,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            child: Stack(
-                              children: <Widget>[
-                                Container(
-                                  child: _itemThumbnail(this.posts[index]),
-                                ),
-                                
-                              ],
+                  ListView.builder(
+                    itemCount: this.posts.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        child: Stack(
+                          children: <Widget>[
+                            Container(
+                              constraints: BoxConstraints.expand(),
+                              child: Image.network(posts.image,
+                                  fit: BoxFit.fitWidth),
                             ),
-                          );
-                        },
-                      ),
-                    ],
+                            Container(
+                              child: Text(posts.name),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   )
                 ],
               ),
@@ -213,10 +207,5 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
     );
-  }
-  Widget _itemThumbnail(Post posts) {
-    return Container(
-        constraints: BoxConstraints.expand(),
-        child: Image.network(posts.image, fit: BoxFit.fitWidth));
   }
 }
