@@ -92,9 +92,11 @@ class _HomepageState extends State<Homepage> {
                     children: <Widget>[
                       Container(
                         child: Text(
-                          'Hello',
+                          'Hello!',
                           style: TextStyle(
-                              fontStyle: FontStyle.normal, fontSize: 30, fontWeight: FontWeight.w700),
+                              fontStyle: FontStyle.normal,
+                              fontSize: 35,
+                              fontWeight: FontWeight.w700),
                         ),
                       ),
                     ],
@@ -104,28 +106,35 @@ class _HomepageState extends State<Homepage> {
                     children: <Widget>[
                       Container(
                         //padding: EdgeInsets.all(30),
-                        child:
-                          Text(durationDrop,style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w600),),
+                        child: Text(
+                          durationDrop,
+                          style: TextStyle(
+                              color: Colors.grey, fontWeight: FontWeight.w500),
+                        ),
                       ),
                       Container(
-                        child: DropdownButton<String>(
-                          icon: Icon(Icons.create),
-                          iconSize: 16,
-                          elevation: 0,
-                          style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w600),
-                          underline: null,
-                          onChanged: (String newValue) {
-                            setState(() {
-                              durationDrop = newValue;
-                            });
-                          },
-                          items: duration
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            icon: Icon(Icons.create),
+                            iconSize: 16,
+                            elevation: 0,
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w500),
+                            underline: null,
+                            onChanged: (String newValue) {
+                              setState(() {
+                                durationDrop = newValue;
+                              });
+                            },
+                            items: duration
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
                         ),
                       ),
                     ],
@@ -137,29 +146,40 @@ class _HomepageState extends State<Homepage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
-                        child: DropdownButton<String>(
-                          value:
-                              postDrop.isNotEmpty ? postDrop : null,
-                          icon: Icon(Icons.arrow_downward),
-                          iconSize: 16,
-                          elevation: 0,
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600,),
-                          onChanged: (String newValue) {
-                            setState(() {
-                              postDrop = newValue;
-                            });
-                          },
-                          items: postType
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            value: postDrop.isNotEmpty ? postDrop : null,
+                            icon: Icon(Icons.arrow_downward),
+                            iconSize: 16,
+                            elevation: 0,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            onChanged: (String newValue) {
+                              setState(() {
+                                postDrop = newValue;
+                              });
+                            },
+                            items: postType
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
                         ),
                       ),
                     ],
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30.0),
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[],
+                  )
                 ],
               ),
             ),
