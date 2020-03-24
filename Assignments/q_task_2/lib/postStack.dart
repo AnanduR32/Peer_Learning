@@ -14,27 +14,19 @@ class PostStack extends StatelessWidget {
               Radius.circular(25.0),
             ),
           ),
-          margin: EdgeInsets.fromLTRB(8,10,8,0),
-          height: 200,
+          margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+          height: 150,
           child: Stack(
             children: <Widget>[
-              Container(
-                child: _imageBackground(post),
-              ),
+              _imageBackground(post),
               Container(
                 padding: EdgeInsets.all(20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Container(
-                      child: _nameOfUser(post),
-                    ),
-                    Container(
-                      child: _locationOfUser(post),
-                    ),
-                    Container(
-                      child: _captionOfUser(post),
-                    ),
+                    _nameOfUser(post),
+                    _locationOfUser(post),
+                    _captionOfUser(post),
                   ],
                 ),
               ),
@@ -48,24 +40,38 @@ class PostStack extends StatelessWidget {
 
   Widget _imageBackground(PostClass post) {
     return Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(
-            Radius.circular(25.0),
-          ),
+      constraints: BoxConstraints.expand(),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(15),
+        child: Image.network(
+          post.image,
+          fit: BoxFit.fitWidth,
         ),
-        constraints: BoxConstraints.expand(height: 200),
-        child: Image.network(post.image, fit: BoxFit.fitWidth));
+      ),
+    );
   }
 
   Widget _nameOfUser(PostClass post) {
-    return Container(child: Text(post.name));
+    return Container(
+        child: Text(
+      post.name,
+      style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
+    ));
   }
 
   Widget _locationOfUser(PostClass post) {
-    return Container(child: Text(post.location));
+    return Container(
+        child: Text(
+      post.location,
+      style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
+    ));
   }
 
   Widget _captionOfUser(PostClass post) {
-    return Container(child: Text(post.caption));
+    return Container(
+        child: Text(
+      post.caption,
+      style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
+    ));
   }
 }
