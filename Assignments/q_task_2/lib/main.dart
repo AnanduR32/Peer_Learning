@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 import 'user.dart';
 import 'package:flutter/rendering.dart';
-// import 'models/post.dart';
-import 'details/posts.dart';
+import 'models/postClass.dart';
+import 'details/userpost.dart';
 
 String durationDrop = 'Today';
 String postDrop = 'All';
@@ -31,14 +31,14 @@ class TinkerApp extends StatelessWidget {
 
 class Homepage extends StatefulWidget {
   Homepage({Key key}) : super(key: key);
+  final posts = UserPosts.fetchAll();
   @override
-  _HomepageState createState() => _HomepageState();
+  _HomepageState createState() => _HomepageState(posts);
 }
 
 class _HomepageState extends State<Homepage> {
-  // final List<Post> posts;
-  // _HomepageState(this.posts);
-  final posts = Details.fetchAll();
+  final List<PostClass> posts;
+  _HomepageState(this.posts);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -184,19 +184,28 @@ class _HomepageState extends State<Homepage> {
                   ListView.builder(
                     itemCount: this.posts.length,
                     itemBuilder: (context, index) {
-                      return Container(
-                        child: Stack(
-                          children: <Widget>[
-                            Container(
-                              constraints: BoxConstraints.expand(),
-                              child: Image.network(posts.image,
-                                  fit: BoxFit.fitWidth),
+                      return Column(
+                        children: <Widget>[
+                          Container(
+                            padding: EdgeInsets.all(20),
+                            child: Stack(
+                              children: <Widget>[
+                                Container(
+                                  child: _imageBackground(this.posts[index]),
+                                ),
+                                Container(
+                                  child: _nameOfUser(this.posts[index]),
+                                ),
+                                Container(
+                                  child: _locationOfUser(this.posts[index]),
+                                ),
+                                Container(
+                                  child: _captionOfUser(this.posts[index]),
+                                ),
+                              ],
                             ),
-                            Container(
-                              child: Text(posts.name),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       );
                     },
                   )
@@ -207,5 +216,23 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
     );
+  }
+
+  Widget _imageBackground(PostClass posts) {
+    return Container(
+        constraints: BoxConstraints.expand(),
+        child: Image.network(posts.image, fit: BoxFit.fitWidth));
+  }
+  Widget _nameOfUser(PostClass posts) {
+    return Container(
+        child: Text(posts.name));
+  }
+  Widget _locationOfUser(PostClass posts) {
+    return Container(
+        child: Text(posts.location));
+  }
+  Widget _captionOfUser(PostClass posts) {
+    return Container(
+        child: Text(posts.caption));
   }
 }
