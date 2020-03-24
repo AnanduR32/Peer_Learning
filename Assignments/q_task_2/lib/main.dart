@@ -115,8 +115,7 @@ class _HomepageState extends State<Homepage> {
                         child: Text(
                           durationDrop,
                           style: TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.w500),
+                              color: Colors.grey, fontWeight: FontWeight.w500),
                         ),
                       ),
                       Container(
@@ -134,8 +133,8 @@ class _HomepageState extends State<Homepage> {
                                 durationDrop = newValue;
                               });
                             },
-                            items: duration.map<DropdownMenuItem<String>>(
-                                (String value) {
+                            items: duration
+                                .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(value),
@@ -168,8 +167,8 @@ class _HomepageState extends State<Homepage> {
                                 postDrop = newValue;
                               });
                             },
-                            items: postType.map<DropdownMenuItem<String>>(
-                                (String value) {
+                            items: postType
+                                .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(value),
@@ -183,17 +182,14 @@ class _HomepageState extends State<Homepage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                   ),
-                  Column(
-                    children: <Widget>[
-                      ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: posts.length,
-                        itemBuilder: (context,index){
-                          return PostStack(post: posts[index]);
-                        },
-                      ),
-                    ],
-                  )
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: posts.length == null ? 0 : posts.length,
+                    itemBuilder: (context, index) {
+                      return PostStack(post: posts[index]);
+                    },
+                  ),
                 ],
               ),
             ),
@@ -202,5 +198,4 @@ class _HomepageState extends State<Homepage> {
       ),
     );
   }
-
 }
