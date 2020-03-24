@@ -186,6 +186,7 @@ class _HomepageState extends State<Homepage> {
                   Column(
                     children: <Widget>[
                       ListView.builder(
+                        shrinkWrap: true,
                         itemCount: posts.length,
                         itemBuilder: (context,index){
                           return PostStack(post: posts[index]);
