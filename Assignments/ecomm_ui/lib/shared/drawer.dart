@@ -1,21 +1,22 @@
+import 'package:ecomm_ui/shared/colors.dart';
 import 'package:flutter/material.dart';
 import '../homepage.dart';
 
 class DrawerBuild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new  Drawer(
+    return Drawer(
             child: ListView(
               padding: EdgeInsets.zero,
               children: <Widget>[
                 DrawerHeader(
                   decoration: BoxDecoration(
-                    color: Colors.red[500],
+                    color: coralColor,
                   ),
                   child: Text(
-                    'Odu Komban',
+                    'Shop.io',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: beige,
                       fontSize: 24,
                     ),
                   ),

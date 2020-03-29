@@ -1,6 +1,7 @@
 import '../homepageButtons/buttonClass.dart';
 
 class Buttons extends ButtonClass {
+  static final List<String> item= new List<String>();
   static final List<ButtonClass> items = [
     ButtonClass(
       name: 'Fish',
@@ -129,5 +130,12 @@ class Buttons extends ButtonClass {
 
   static List<ButtonClass> fetchAll() {
     return Buttons.items;
+  }
+  static List<String> fetchNames() {
+    int index;
+    for(index=0; index<items.length; index++){
+      item.add(items[index].name);
+    }
+    return Buttons.item;
   }
 }

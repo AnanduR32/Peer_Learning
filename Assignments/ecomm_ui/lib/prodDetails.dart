@@ -22,6 +22,7 @@ class ProdDetails extends StatelessWidget {
         backgroundColor: coralColor,
         drawer: DrawerBuild(),
         appBar: AppBar(
+          backgroundColor: coralColor,
           elevation: 0,),
       )
     );
