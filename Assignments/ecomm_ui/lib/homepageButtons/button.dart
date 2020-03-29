@@ -11,48 +11,76 @@ class Button extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        RawMaterialButton(
-          padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-          shape: new RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(18.0),
-              side: BorderSide(color: Colors.transparent)),
-          fillColor: salmonColor,
-          splashColor: beige,
-          textStyle: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Container(
-                child: Image.asset(
-                  item.image,
+        Container(
+          width: MediaQuery.of(context).size.width * 0.40,
+          child: RawMaterialButton(
+            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+            shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.transparent)),
+            fillColor: salmonColor,
+            splashColor: beige,
+            textStyle: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Container(
+                  child: Image.asset(
+                    item.image,
+                  ),
+                  height: 100,
+                  width: 100,
                 ),
-                height: 100,
-                width: 100,
-              ),
-              new Padding(
-                padding: const EdgeInsets.only(top: 2.0),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(item.name),
-                  Text(item.sub),
-                  Text(item.price),
-                ],
-              ),
-            ],
+                new Padding(
+                  padding: const EdgeInsets.only(top: 2.0),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          item.name,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Text(
+                          item.sub,
+                          style: TextStyle(
+                            color: Colors.grey[600],
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Text(
+                          item.price,
+                          style: TextStyle(
+                            color: Colors.grey[700],
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            onPressed: () {
+              // Navigator.push(
+              //           context,
+              //           MaterialPageRoute(builder: (context) => MedPage(item)),
+              //         );
+            },
           ),
-          onPressed: () {
-            // Navigator.push(
-            //           context,
-            //           MaterialPageRoute(builder: (context) => MedPage(item)),
-            //         );
-          },
         ),
-        SizedBox(
-          height: 30,
-        ),
+        // Padding(
+        //   padding: const EdgeInsets.only(top: 20.0),
+        // ),
       ],
     );
   }

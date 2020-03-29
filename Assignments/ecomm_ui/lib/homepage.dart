@@ -20,7 +20,6 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Homepage',
       home: Scaffold(
         backgroundColor: coralColor,
         drawer: DrawerBuild(),
@@ -35,18 +34,21 @@ class _HomepageState extends State<Homepage> {
             padding: const EdgeInsets.all(10),
             children: <Widget>[
               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.stretch,
+                // mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                   ),
-                  ListView.builder(
+                  GridView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: items.length == null ? 0 : items.length,
                     itemBuilder: (context, index) {
                       return Button(item: items[index]);
                     },
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
