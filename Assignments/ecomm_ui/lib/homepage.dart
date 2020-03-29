@@ -33,28 +33,48 @@ class _HomepageState extends State<Homepage> {
             shrinkWrap: true,
             padding: const EdgeInsets.all(10),
             children: <Widget>[
-              Column(
-                // crossAxisAlignment: CrossAxisAlignment.stretch,
-                // mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
-                  ),
-                  GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: items.length == null ? 0 : items.length,
-                    itemBuilder: (context, index) {
-                      return Button(item: items[index]);
-                    },
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
-                  ),
-                ],
-                //overflow: Overflow.clip,
+              Container(
+                
+                child: Column(
+                  // crossAxisAlignment: CrossAxisAlignment.stretch,
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40.0),
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          child: Text(
+                            'Hello!',
+                            style: TextStyle(
+                                fontStyle: FontStyle.normal,
+                                fontSize: 35,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0),
+                    ),
+                    GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: items.length == null ? 0 : items.length,
+                      itemBuilder: (context, index) {
+                        return Button(item: items[index]);
+                      },
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0),
+                    ),
+                  ],
+                  //overflow: Overflow.clip,
+                ),
               ),
             ],
           ),
